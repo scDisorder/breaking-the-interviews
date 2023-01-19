@@ -52,6 +52,7 @@ func sortFoosByBars() {
 
 }
 
+// const co
 const FooSize = unsafe.Sizeof(Foo{})
 
 func a() {
