@@ -2,12 +2,22 @@ package main
 
 import "fmt"
 
-func reverseString(str string) string {
-	runes := []rune(str)
-	for i, j := 0, len(str)-1; i < j; i, j = i+1, j-1 {
-		runes[i], runes[j] = runes[j], runes[i]
+// Perm prints out int array permutations
+func Perm(v []int, f func([]int)) {
+	perm(v, f, 0)
+}
+
+func perm(v []int, f func([]int), i int) {
+	if i > len(v) {
+		f(v)
+		return
 	}
-	return string(runes)
+	perm(v, f, i+1)
+	for j := i + 1; j < len(v); j++ {
+		v[i], v[j] = v[j], v[i]
+		perm(v, f, i+1)
+		v[i], v[j] = v[j], v[i]
+	}
 }
 
 func permString(str []rune, left int, right int) {
@@ -22,7 +32,8 @@ func permString(str []rune, left int, right int) {
 	}
 }
 
+// returns all the permutations of "qwer"
 func stringPermutations() {
-	str := "ghkw"
+	str := "qwer"
 	permString([]rune(str), 0, len(str)-1)
 }
