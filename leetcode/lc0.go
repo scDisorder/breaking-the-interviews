@@ -2,42 +2,9 @@ package leetcode
 
 import (
 	"math"
-	"strings"
 )
 
-func DNAStrand(dna string) string {
-	replacer := strings.NewReplacer(
-		"A", "T",
-		"T", "A",
-		"G", "C",
-		"C", "G",
-	)
-	return replacer.Replace(dna)
-}
-
-// TowerBuilder build a tower with specified amount of floors using asterisks and spaces
-// example: TowerBuilder(3) will return an array []string{"  *  ", " *** ", "******"}
-// to be printed as
-// "  *  "
-// " *** "
-// "*****"
-// Source: https://www.codewars.com/kata/576757b1df89ecf5bd00073b
-func TowerBuilder(nFloors int) []string {
-	if nFloors == 1 {
-		return []string{"*"}
-	}
-
-	res := make([]string, nFloors)
-	for i := 0; i < nFloors; i++ {
-		totalAsterisks := (nFloors*2 - 1) - i*2
-		spaces := strings.Repeat("+", i)
-		b := spaces + strings.Repeat("*", totalAsterisks) + spaces
-		res[nFloors-i-1] = b
-	}
-	return res
-}
-
-func twoSum(nums []int, target int) []int {
+func TwoSum(nums []int, target int) []int {
 
 	var currentIndex int
 	var pairIndex int
@@ -59,7 +26,7 @@ outerLoop:
 	return []int{currentIndex, pairIndex}
 }
 
-func lengthOfLongestSubstring(s string) int {
+func LengthOfLongestSubstring(s string) int {
 	var start, maxLength int
 	checks := make(map[rune]int)
 
@@ -79,7 +46,7 @@ func lengthOfLongestSubstring(s string) int {
 	return maxInt(maxLength, len(s)-start)
 }
 
-func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	if len(nums1) > len(nums2) {
 		nums1, nums2 = nums2, nums1
 	}
@@ -126,7 +93,7 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	return 0
 }
 
-func removeDuplicates(nums []int) int {
+func RemoveDuplicates(nums []int) int {
 	currentInsert := 1
 	for i := range nums {
 		if nums[currentInsert] != nums[i] {
@@ -137,7 +104,7 @@ func removeDuplicates(nums []int) int {
 	return currentInsert
 }
 
-func minFlipsMonoIncr(s string) int {
+func MinFlipsMonoIncr(s string) int {
 	var res int
 	for _, char := range s {
 		if char == '0' {
@@ -160,7 +127,7 @@ func minFlipsMonoIncr(s string) int {
 
 // uses Kadane's algorithm
 // https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
-func maxSubarraySumCircular(nums []int) int {
+func MaxSubarraySumCircular(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
@@ -186,7 +153,7 @@ func maxSubarraySumCircular(nums []int) int {
 	return maxInt(sum1, sum2)
 }
 
-func rotate(matrix [][]int) {
+func Rotate(matrix [][]int) {
 	n := len(matrix)
 	for i := 0; i < n/2; i++ {
 		for j := i; j < n-i-1; j++ {

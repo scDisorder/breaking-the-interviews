@@ -1,5 +1,7 @@
 package maths
 
+var Fibonacci = fibonacci
+
 func fibonacci(n int) int {
 	if n < 2 {
 		return n
