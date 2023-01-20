@@ -37,12 +37,12 @@ func (f Foos) Swap(i, j int)      { f[i], f[j] = f[j], f[i] }
 
 func sortFoosByBars() {
 	foos := Foos{
-		{Bar: "z"},
+		{Bar: "z", Qux: 1, Dem: true},
 		{Bar: "d"},
-		{Bar: "q"},
+		{Bar: "q", Qux: 2, Dem: false},
 		{Bar: "a"},
-		{Bar: "x"},
-		{Bar: "r"},
+		{Bar: "x", Qux: 5, Dem: true},
+		{Bar: "r", Qux: 4, Dem: true},
 		{Bar: "c"},
 	}
 	fmt.Println(foos)
@@ -55,7 +55,7 @@ func sortFoosByBars() {
 // const co
 const FooSize = unsafe.Sizeof(Foo{})
 
-func a() {
+func playWithSlices() {
 	x := []int{}
 	x = append(x, 0)
 	x = append(x, 1)
@@ -64,6 +64,7 @@ func a() {
 
 	z := append(x, 4)
 	xy, xz := &y, &z
+
 	fmt.Println(y, z)
 	fmt.Print(xy, xz)
 }

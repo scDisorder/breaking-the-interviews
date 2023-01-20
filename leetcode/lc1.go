@@ -53,3 +53,27 @@ func InsertInterval(intervals [][]int, newInterval []int) [][]int {
 	}
 	return res
 }
+
+func findSubsequences(nums []int) [][]int {
+	var res [][]int
+	dfsInts(nums, 0, []int{}, &res)
+	return res
+}
+
+func dfsInts(nums []int, start int, cur []int, res *[][]int) {
+	if len(cur) >= 2 {
+		*res = append(*res, append([]int{}, cur...))
+	}
+
+	m := make(map[int]bool)
+	for i := start; i < len(nums); i++ {
+		if m[nums[i]] {
+			continue
+		}
+
+		if len(cur) == 0 || nums[i] >= cur[len(cur)-1] {
+			m[nums[i]] = true
+			dfsInts(nums, i+1, append(cur, nums[i]), res)
+		}
+	}
+}
