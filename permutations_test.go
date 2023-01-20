@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -36,7 +35,6 @@ func Test_permString(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fmt.Println(permString(tt.args.src, tt.args.left))
 			if got := permString(tt.args.src, tt.args.left); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("permString() = %v, want %v", got, tt.want)
 			}
@@ -66,7 +64,6 @@ func Test_permInt(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fmt.Println(permInt(tt.args.v, tt.args.i))
 			if got := permInt(tt.args.v, tt.args.i); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("permInt() = %v, want %v", got, tt.want)
 			}
