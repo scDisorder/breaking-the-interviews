@@ -5,11 +5,10 @@ import (
 	"testing"
 )
 
-func TestBubbleSort(t *testing.T) {
+func TestCocktailSort(t *testing.T) {
 	type args struct {
-		src []int
+		arr []int
 	}
-
 	tests := []struct {
 		name string
 		args args
@@ -17,20 +16,20 @@ func TestBubbleSort(t *testing.T) {
 	}{
 		{
 			name: "test-01",
-			args: args{src: []int{2, 9, 7, 6, 3, 1, 0, 8}},
+			args: args{arr: []int{2, 9, 7, 6, 3, 1, 0, 8}},
 			want: arr0Sorted,
 		},
 		{
 			name: "test-02",
-			args: args{src: []int{64, 34, 25, 12, 22, 11, 90}},
+			args: args{arr: []int{64, 34, 25, 12, 22, 11, 90}},
 			want: arr1Sorted,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			BubbleSort(tt.args.src)
-			if !reflect.DeepEqual(tt.want, tt.args.src) {
-				t.Errorf("BubbleSort() = %v, want %v", tt.args.src, tt.want)
+			CocktailSort(tt.args.arr)
+			if !reflect.DeepEqual(tt.want, tt.args.arr) {
+				t.Errorf("BubbleSort() = %v, want %v", tt.args.arr, tt.want)
 			}
 		})
 	}
