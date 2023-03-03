@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func bufferChannelCheck() {
 	intCh := make(chan int, 3)
@@ -14,4 +16,24 @@ func bufferChannelCheck() {
 
 	fmt.Println(<-intCh)
 	fmt.Println("The End")
+}
+
+func arrPrintOutTest001() {
+	arr := []int{1, 2, 3}
+
+	addNum(arr[0:2])
+	fmt.Println(arr)
+	// print out 1,2,4
+
+	addNums(arr[0:2])
+	fmt.Println(arr)
+	// print out 1,2,4 as addNums unable to exceed current [3] capacity
+}
+
+func addNum(arr []int) {
+	arr = append(arr, 4)
+}
+
+func addNums(arr []int) {
+	arr = append(arr, 5, 6)
 }
